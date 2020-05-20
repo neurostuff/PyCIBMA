@@ -51,28 +51,6 @@ class HPGRF(Estimator):
         pass
 
 
-@due.dcite(references.SBLFR, description='Introduces the SBLFR model.')
-class SBLFR(Estimator):
-    """
-    Spatial Bayesian latent factor regression model [1]_.
-
-    Warnings
-    --------
-    This method is not yet implemented.
-
-    References
-    ----------
-    .. [1] Montagna, Silvia, et al. "Spatial Bayesian latent factor regression
-        modeling of coordinate‐based meta‐analysis data." Biometrics 74.1
-        (2018): 342-353. https://doi.org/10.1111/biom.12713
-    """
-    def __init__(self):
-        pass
-
-    def _fit(self, dataset):
-        pass
-
-
 @due.dcite(references.SBR, description='Introduces the SBR model.')
 class SBR(Estimator):
     """
