@@ -58,6 +58,7 @@ REQUIRES = [
     "numpy",
     "pandas",
     "pymare>=0.0.2",
+    "requests",
     "scikit-learn",
     "scipy",
     "seaborn",

@@ -2,7 +2,13 @@ import pytest
 from contextlib import ExitStack as does_not_raise
 from numpy.random import RandomState
 
-from ..generate import create_coordinate_dataset, _create_source, _create_foci, _array_like
+from ..generate import (
+    create_coordinate_dataset,
+    _create_source,
+    _create_foci,
+    _array_like,
+    create_image_dataset,
+)
 from ..dataset import Dataset
 
 
@@ -223,3 +229,25 @@ def test_create_coordinate_dataset(kwargs, expectation):
             (kwargs["n_studies"] * n_foci) + (kwargs["n_studies"] * kwargs["n_noise_foci"]),
         )
         assert len(dataset.coordinates) == expected_coordinate_number
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    [
+        pytest.param(
+            {
+                "neurosynth": True,
+            },
+            id="neurosynth",
+        ),
+        pytest.param(
+            {
+                "neurosynth": False,
+            },
+            id="simple",
+        ),
+    ],
+)
+def test_create_image_dataset(kwargs):
+    ground_truth_map, dset = create_image_dataset(**kwargs)
+    assert set(dset.get_images()) == {"beta", "se", "t", "z", "varcope"}
